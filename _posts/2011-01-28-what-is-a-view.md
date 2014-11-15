@@ -142,12 +142,14 @@ _Using template variables_
 			this.render();
 		},
 		render: function(){
-			//Pass variables in using Underscore.js Template
-			var variables = { search_label: "My Search" };
-			// Compile the template using underscore
-			var template = _.template( $("#search_template").html(), variables );
-			// Load the compiled HTML into the Backbone "el"
-			this.$el.html( template );
+			// Set an object containing our variable(s)
+			var variables = { search_label: "My Search"};
+			// Reference the template partial using underscore
+            		var template = _.template( $("#search_template").html() );
+            		// Pass variables into the Underscores.js template and compile it
+            		var result = template(variables);
+            		// Load the compiled HTML into the Backbone "el"
+			this.$el.html( result );
 		},
 		events: {
 			"click input[type=button]": "doSearch"  
